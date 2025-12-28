@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
-import 'registro.dart'; // IMPORTANTE: Esto conecta con tu otro archivo
+import 'registro.dart';
+import 'home.dart'; //  IMPORTAMOS LA PANTALLA HOME
 
 void main() => runApp(const MyApp());
 
@@ -10,7 +11,7 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
-      title: 'CIVIAPP San Juan', // Nombre oficial de tu proyecto [cite: 3]
+      title: 'CIVIAPP San Juan',
       theme: ThemeData(
         primarySwatch: Colors.blue,
       ),
@@ -28,11 +29,11 @@ class LoginPage extends StatelessWidget {
       backgroundColor: Colors.white,
       body: Padding(
         padding: const EdgeInsets.all(20.0),
-        child: SingleChildScrollView( // Agregado para evitar errores de espacio
+        child: SingleChildScrollView(
           child: Column(
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
-              const SizedBox(height: 80), // Espacio superior
+              const SizedBox(height: 80),
               const Icon(Icons.lock_person, size: 100, color: Colors.blue),
               const SizedBox(height: 20),
               const Text(
@@ -40,8 +41,8 @@ class LoginPage extends StatelessWidget {
                 style: TextStyle(fontSize: 24, fontWeight: FontWeight.bold),
               ),
               const SizedBox(height: 30),
-              
-              // Campo de Usuario (Correo)
+
+              // Correo
               const TextField(
                 decoration: InputDecoration(
                   labelText: 'Correo electrónico',
@@ -50,8 +51,8 @@ class LoginPage extends StatelessWidget {
                 ),
               ),
               const SizedBox(height: 15),
-              
-              // Campo de Contraseña
+
+              // Contraseña
               const TextField(
                 obscureText: true,
                 decoration: InputDecoration(
@@ -60,45 +61,54 @@ class LoginPage extends StatelessWidget {
                   prefixIcon: Icon(Icons.lock),
                 ),
               ),
-              
-              // Opción de Recuperar Contraseña 
+
               Align(
                 alignment: Alignment.centerRight,
                 child: TextButton(
-                  onPressed: () {
-                    print("Navegando a recuperar contraseña...");
-                  },
+                  onPressed: () {},
                   child: const Text('¿Olvidaste tu contraseña?'),
                 ),
               ),
-              
+
               const SizedBox(height: 15),
-              
-              // Botón de Entrar
+
+              // BOTÓN INICIAR SESIÓN
               SizedBox(
                 width: double.infinity,
                 height: 50,
                 child: ElevatedButton(
                   onPressed: () {
-                    print("Validando datos en base de datos MySQL...");
+                    // 🔥 AQUÍ NAVEGA AL HOME
+                    Navigator.pushReplacement(
+                      context,
+                      MaterialPageRoute(
+                        builder: (context) => const HomeScreen(),
+                      ),
+                    );
                   },
-                  child: const Text('INICIAR SESIÓN', style: TextStyle(fontSize: 18)),
+                  child: const Text(
+                    'INICIAR SESIÓN',
+                    style: TextStyle(fontSize: 18),
+                  ),
                 ),
               ),
-              
+
               const SizedBox(height: 20),
-              
-              // Botón para ir al Registro 
+
+              // IR A REGISTRO
               TextButton(
                 onPressed: () {
-                  // Esta línea hace la magia de cambiar de pantalla
                   Navigator.push(
                     context,
-                    MaterialPageRoute(builder: (context) => const RegistroScreen()),
+                    MaterialPageRoute(
+                      builder: (context) => const RegistroScreen(),
+                    ),
                   );
                 },
-                child: const Text('¿No tienes cuenta? Regístrate aquí', 
-                  style: TextStyle(fontSize: 16)),
+                child: const Text(
+                  '¿No tienes cuenta? Regístrate aquí',
+                  style: TextStyle(fontSize: 16),
+                ),
               ),
             ],
           ),
