@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'detalle_reporte.dart'; // 👈 IMPORTAMOS EL DETALLE
 
 class MisReportesScreen extends StatelessWidget {
   const MisReportesScreen({super.key});
@@ -13,32 +14,59 @@ class MisReportesScreen extends StatelessWidget {
 
       body: ListView(
         padding: const EdgeInsets.all(15),
-        children: const [
+        children: [
 
+          // 🔹 REPORTE 1
           Card(
             child: ListTile(
-              leading: Icon(Icons.water_drop, color: Colors.blue),
-              title: Text('Fuga de agua'),
-              subtitle: Text('Estado: Pendiente'),
-              trailing: Icon(Icons.arrow_forward_ios),
+              leading: const Icon(Icons.water_drop, color: Colors.blue),
+              title: const Text('Fuga de agua'),
+              subtitle: const Text('Estado: Pendiente'),
+              trailing: const Icon(Icons.arrow_forward_ios),
+              onTap: () {
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                    builder: (context) => const DetalleReporteScreen(),
+                  ),
+                );
+              },
             ),
           ),
 
+          // 🔹 REPORTE 2
           Card(
             child: ListTile(
-              leading: Icon(Icons.lightbulb, color: Colors.orange),
-              title: Text('Falla de alumbrado'),
-              subtitle: Text('Estado: En proceso'),
-              trailing: Icon(Icons.arrow_forward_ios),
+              leading: const Icon(Icons.lightbulb, color: Colors.orange),
+              title: const Text('Falla de alumbrado'),
+              subtitle: const Text('Estado: En proceso'),
+              trailing: const Icon(Icons.arrow_forward_ios),
+              onTap: () {
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                    builder: (context) => const DetalleReporteScreen(),
+                  ),
+                );
+              },
             ),
           ),
 
+          // 🔹 REPORTE 3
           Card(
             child: ListTile(
-              leading: Icon(Icons.delete, color: Colors.green),
-              title: Text('Basura acumulada'),
-              subtitle: Text('Estado: Resuelto'),
-              trailing: Icon(Icons.arrow_forward_ios),
+              leading: const Icon(Icons.delete, color: Colors.green),
+              title: const Text('Basura acumulada'),
+              subtitle: const Text('Estado: Resuelto'),
+              trailing: const Icon(Icons.arrow_forward_ios),
+              onTap: () {
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                    builder: (context) => const DetalleReporteScreen(),
+                  ),
+                );
+              },
             ),
           ),
         ],

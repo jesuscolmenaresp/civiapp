@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'registro.dart';
-import 'home.dart'; //  IMPORTAMOS LA PANTALLA HOME
+import 'home.dart';
+import 'recuperar_contrasena.dart';  // Esta SÍ se usa en LoginPage
 
 void main() => runApp(const MyApp());
 
@@ -34,11 +35,15 @@ class LoginPage extends StatelessWidget {
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
               const SizedBox(height: 80),
-              const Icon(Icons.lock_person, size: 100, color: Colors.blue),
+              const Icon(Icons.location_city, size: 100, color: Colors.blue),
               const SizedBox(height: 20),
               const Text(
-                'CIVIAPP San Juan',
-                style: TextStyle(fontSize: 24, fontWeight: FontWeight.bold),
+                'CIVIAPP',
+                style: TextStyle(fontSize: 36, fontWeight: FontWeight.bold, color: Colors.blue),
+              ),
+              const Text(
+                'San Juan de los Morros',
+                style: TextStyle(fontSize: 18, color: Colors.grey),
               ),
               const SizedBox(height: 30),
 
@@ -62,10 +67,18 @@ class LoginPage extends StatelessWidget {
                 ),
               ),
 
+              // OLVIDÉ CONTRASEÑA
               Align(
                 alignment: Alignment.centerRight,
                 child: TextButton(
-                  onPressed: () {},
+                  onPressed: () {
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                        builder: (context) => const RecuperarContrasenaScreen(),
+                      ),
+                    );
+                  },
                   child: const Text('¿Olvidaste tu contraseña?'),
                 ),
               ),
@@ -78,7 +91,6 @@ class LoginPage extends StatelessWidget {
                 height: 50,
                 child: ElevatedButton(
                   onPressed: () {
-                    // 🔥 AQUÍ NAVEGA AL HOME
                     Navigator.pushReplacement(
                       context,
                       MaterialPageRoute(
